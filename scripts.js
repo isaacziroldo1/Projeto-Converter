@@ -4,6 +4,7 @@ const form = document.querySelector("form");
 const amount = document.getElementById("amount");
 const quotation = document.getElementById("quotation");
 const currency = document.getElementById("currency");
+const footer = document.querySelector("main footer");
 
 //manipulando o input amount para receber somente números
 amount.addEventListener("input", ()=> {
@@ -36,8 +37,13 @@ form.onsubmit = (event) => {
 //Função para converter a moeda
 function convertCurrency(amount, price, symbol) {
     try {
-        console.log(amount, price, symbol)
+        //aplica a classe show-result no footer para mostrar o resultado da conversão
+        footer.classList.add("show-result")
     } catch (error) {
+        //oculta a classe show-result do footer para esconder o resultado da conversão
+        footer.classList.remove("show-result")
+
+        //exibe o erro no console e um alerta para o usuário
         console.log(error);
         alert("Ocorreu um erro ao converter a moeda. Verifique os valores inseridos e tente novamente.");
     }
